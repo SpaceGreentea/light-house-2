@@ -1,0 +1,185 @@
+@use 'mixin';
+
+header {
+  background-color: beige;
+  width: 300px;
+  height: 100%;
+  padding: 40px 55px 40px 45px;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+
+  @include mixin.sp {
+    width: 100%;
+    height: 72px;
+    padding: 10px 18px 8px 18px;
+  }
+
+  .site-logo {
+    width: 200px;
+    margin-bottom: 38px;
+
+    @include mixin.sp {
+      width: 180px;
+      margin-bottom: 0;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  #hamburger-navigation {
+
+    @include mixin.sp {
+      width: 300px;
+      height: 100vh;
+      background-color: #fff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+      animation: slideinLeft 0.8s; 
+
+      @keyframes slideinLeft {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-300px);
+        }
+      }
+    }
+  }
+
+  #hamburger-navigation.active {
+    opacity: 1;
+    visibility: visible;
+    animation: slideinRight 0.8s;
+    z-index: 15;
+
+    @keyframes slideinRight {
+      0% {
+        transform: translateX(-300px);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  .nav-menu {
+    margin-bottom: 76px;
+    display: block;
+
+    @include mixin.sp {
+      padding-top: 40px;
+      padding-left: 45px;
+    }
+
+    li {
+      font-weight: normal;
+      font-size: 1.4rem;
+      // line-height: 24px;
+      // text-align: left;
+      color: #121212;
+      padding-bottom: 16px;
+    }
+  }
+
+  .nav-sns {
+    display: block;
+
+    @include mixin.sp {
+      padding-left: 45px;
+    }
+
+    li {
+      font-weight: normal;
+      font-size: 1.4rem;
+      // line-height: 24px;
+      // text-align: left;
+      color: #000;
+      padding-bottom: 16px;
+    }
+  }
+
+  .hamburger-menu {
+    display: none;
+
+    @include mixin.sp {
+      display: block;
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+      transition: 0.4s;
+      position: absolute;
+      top: 27px;
+      right: 18px;
+
+      &:hover {
+        opacity: 0.5;
+      }
+
+      span {
+        width: 30px;
+        height: 2px;
+        background: #000;
+        position: absolute;
+        transition: 0.4s ease-in-out;
+
+        &:nth-child(1) {
+          top: 0;
+        }
+
+        &:nth-child(2) {
+          top: 10px;
+        }
+
+        &:nth-child(3) {
+          top: 20px;
+        }
+      }
+    }
+  }
+
+  .hamburger-menu.active {
+    z-index: 20;
+
+    @include mixin.sp {
+      span {
+        background: burlywood;
+      }
+
+      span:nth-child(1) {
+        top: 10px;
+        transform: rotate(-225deg);
+      }
+
+      span:nth-child(2),
+      span:nth-child(3) {
+        top: 10px;
+        transform: rotate(225deg);
+      }
+    }
+  }
+
+  .mask {
+    display: none;
+  }
+
+  .mask.active {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    opacity: 0.8;
+    z-index: 12;
+    cursor: pointer;
+  }
+}

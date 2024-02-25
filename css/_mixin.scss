@@ -1,0 +1,34 @@
+@mixin sp {
+  @media(max-width: 960px) {
+    @content;
+  }
+}
+
+// vw値 計算用 ここから
+$pcSize: 1400px;
+$spSize: 375px;
+
+
+@function pcvw($size: 10px) {
+  $pcvw: $size * 100vw / $pcSize;
+  @return $pcvw
+}
+
+@function spvw($size: 10px) {
+  $spvw: $size * 100vw / $spSize;
+  @return $spvw
+}
+// vw値 計算用 ここまで
+
+
+// パーセント 計算用
+@function pcpercent($size: 10px) {
+  $pcpercent: $size / $pcSize * 100%;
+  @return $pcpercent
+}
+
+@function sppercent($size: 10px) {
+  $sppercent: $size / $spSize * 100%;
+  @return $sppercent
+}
+

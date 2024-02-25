@@ -1,0 +1,62 @@
+@use 'mixin';
+
+.contact {
+  background-color: #fff;
+  padding-bottom: 80px;
+
+  .contact-explain {
+    // font-family: Arial;
+    // font-weight: normal;
+    font-size: 1.6rem;
+    // line-height: 21px;
+    // text-align: left;
+    color: #121212;
+  }
+
+  .link {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+
+    @include mixin.sp {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .item {
+    width: 30%;
+    outline: solid 1px #121212;
+    display: block;
+    // font-family: Arial;
+    // font-weight: normal;
+    font-size: 1.4rem;
+    // line-height: 21px;
+    text-align: center;
+    color: #121212;
+    padding: 50px 0;
+    position: relative;
+    transition: 0.1s;
+
+    @include mixin.sp {
+      margin-bottom: 20px;
+    }
+
+    @include mixin.sp {
+      width: 60%;
+    }
+
+    &::before {
+      content: "";
+      border-top: 20px solid transparent;
+      border-right: 20px solid #121212;
+      position: absolute;
+      right: 4px;
+      bottom: 4px;
+    }
+
+    &:hover {
+      outline: solid 3px #121212;
+    }
+  }
+}
